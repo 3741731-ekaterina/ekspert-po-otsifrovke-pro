@@ -1,23 +1,54 @@
-import React, { useEffect, useRef } from 'react';
-import { Card, CardContent, CardHeader, CardTitle, CardFooter } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
-import { Badge } from '@/components/ui/badge';
+import React from 'react';
+import { Card, CardContent, CardFooter } from '@/components/ui/card';
 import { Check, Info, Star, Zap, Rocket } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
-/* GetCourse widget loader */
-function GetCourseWidget({ widgetId, scriptId }: { widgetId: string; scriptId: string }) {
-  const ref = useRef<HTMLDivElement>(null);
-  useEffect(() => {
-    if (!ref.current) return;
-    ref.current.innerHTML = '';
-    const s = document.createElement('script');
-    s.id = scriptId;
-    s.src = `https://yahontovaschool.getcourse.ru/pl/lite/widget/script?id=${widgetId}`;
-    ref.current.appendChild(s);
-  }, [widgetId, scriptId]);
-  return <div ref={ref} className="mt-3 [&_a]:!w-full [&_a]:!block" />;
-}
+declare function gcOpenModal(id: string): void;
+
+/* ─── per-card colour tokens — нежная пастель ────────────────────────────── */
+const schemes = {
+  /* сиреневый / лаванда */
+  blue: {
+    cardBg:      'bg-gradient-to-b from-violet-50 to-white',
+    headerBg:    'bg-gradient-to-br from-violet-300 to-indigo-300',
+    badgeBg:     'bg-violet-100 text-violet-600',
+    priceTxt:    'text-violet-600',
+    checkActive: 'text-violet-400',
+    sectionLbl:  'text-violet-300',
+    starColor:   'text-violet-300',
+    borderRing:  'ring-1 ring-violet-200',
+    btnClass:    'bg-gradient-to-r from-violet-400 to-indigo-400 shadow-lg shadow-violet-200/60 hover:shadow-violet-300/60',
+    popularBar:  '',
+  },
+  /* мятный / нефритовый */
+  teal: {
+    cardBg:      'bg-gradient-to-b from-emerald-50 to-white',
+    headerBg:    'bg-gradient-to-br from-teal-300 to-emerald-300',
+    badgeBg:     'bg-emerald-100 text-emerald-700',
+    priceTxt:    'text-emerald-600',
+    checkActive: 'text-emerald-400',
+    sectionLbl:  'text-emerald-300',
+    starColor:   'text-emerald-300',
+    borderRing:  'ring-1 ring-emerald-200',
+    btnClass:    'bg-gradient-to-r from-teal-400 to-emerald-400 shadow-lg shadow-emerald-200/60 hover:shadow-emerald-300/60',
+    popularBar:  '',
+  },
+  /* персиковый / абрикосовый */
+  orange: {
+    cardBg:      'bg-gradient-to-b from-rose-50 to-white',
+    headerBg:    'bg-gradient-to-br from-rose-300 to-orange-200',
+    badgeBg:     'bg-rose-100 text-rose-600',
+    priceTxt:    'text-rose-500',
+    checkActive: 'text-rose-400',
+    sectionLbl:  'text-rose-300',
+    starColor:   'text-rose-300',
+    borderRing:  'ring-1 ring-rose-200',
+    btnClass:    'bg-gradient-to-r from-rose-400 to-orange-300 shadow-lg shadow-rose-200/60 hover:shadow-rose-300/60',
+    popularBar:  'bg-gradient-to-r from-rose-400 to-orange-300',
+  },
+} as const;
+
+type Scheme = keyof typeof schemes;
 
 const tariffs = [
   {
@@ -26,7 +57,8 @@ const tariffs = [
     description: 'Финучёт на таблицах',
     price: '70 000',
     popular: false,
-    icon: <Star className="text-primary" size={22} />,
+    scheme: 'blue' as Scheme,
+    icon: <Star className="text-white/90" size={22} />,
     modules: [
       { text: 'Модуль 1. Зачем нужен финдир и услуги финучёта', faded: false },
       { text: 'Модуль 2. ДДС', faded: false },
@@ -46,7 +78,8 @@ const tariffs = [
     description: 'Финучёт на сервисах Финтабло и ПланФакт',
     price: '80 000',
     popular: false,
-    icon: <Zap className="text-primary" size={22} />,
+    scheme: 'teal' as Scheme,
+    icon: <Zap className="text-white/90" size={22} />,
     modules: [
       { text: 'Модуль 1. Зачем нужен финдир и услуги финучёта', faded: false },
       { text: 'Модуль 2. Отчёт ДДС', faded: false },
@@ -58,7 +91,7 @@ const tariffs = [
       { text: 'Модуль 8. Как из навыков сделать услуги и продать их клиенту', faded: true },
     ],
     bonuses: ['Курс по Google-таблицам', 'Курс по нейросетям', 'Урок по Unit-экономике', 'Учебник (при оплате до 1 мая)'],
-    access: ['Общий чат с учениками', 'Проверка ДЗ куратором', '5 созвонов с экспертами', 'Доступ к курсу 1 год', 'Сертификат'],
+    access: ['Общий чат с учениками', 'Проверка ДЗ куратором', '6 созвонов с экспертами', 'Доступ к курсу 1 год', 'Сертификат'],
     widgetId: '1590614',
     scriptId: '298380bb3e0a84be6ed550763ad89aea7f88185f',
   },
@@ -68,7 +101,8 @@ const tariffs = [
     description: 'Максимальный результат',
     price: '90 000',
     popular: true,
-    icon: <Rocket className="text-primary" size={22} />,
+    scheme: 'orange' as Scheme,
+    icon: <Rocket className="text-white/90" size={22} />,
     modules: [
       { text: 'Модуль 1. Зачем нужен финдир и услуги финучёта', faded: false },
       { text: 'Модуль 2. Отчёт ДДС', faded: false },
@@ -86,6 +120,100 @@ const tariffs = [
   },
 ];
 
+type Tariff = (typeof tariffs)[number];
+
+function TariffCard({ tariff }: { tariff: Tariff }) {
+  const s = schemes[tariff.scheme];
+  return (
+    <Card
+      className={cn(
+        'flex flex-col relative overflow-hidden border-none shadow-xl transition-transform duration-300',
+        s.cardBg,
+        tariff.popular
+          ? cn(s.borderRing, 'scale-[1.03] z-10 shadow-2xl hover:scale-[1.06]')
+          : cn(s.borderRing, 'hover:scale-[1.02]')
+      )}
+    >
+      {/* Popular banner */}
+      {tariff.popular && (
+        <div className={cn('absolute top-0 left-0 right-0 text-white text-center py-2.5 text-xs font-bold uppercase tracking-widest flex items-center justify-center gap-1.5', s.popularBar)}>
+          <span>🔥</span> Самый популярный <span>🔥</span>
+        </div>
+      )}
+
+      {/* Coloured header block */}
+      <div className={cn('px-7 pt-7 pb-6 rounded-t-2xl', s.headerBg, tariff.popular && 'pt-11')}>
+        <div className="flex items-center gap-2 mb-3">
+          <span className={cn('text-[10px] font-bold uppercase tracking-widest px-2 py-0.5 rounded-full', s.badgeBg)}>
+            {tariff.level}
+          </span>
+        </div>
+        <div className="flex items-center justify-between mb-1">
+          <h3 className="text-xl font-bold text-white">{tariff.name}</h3>
+          {tariff.icon}
+        </div>
+        <p className="text-white/70 text-xs mb-4">{tariff.description}</p>
+        <div className="flex items-baseline gap-1">
+          <span className="text-4xl font-extrabold text-white">{tariff.price}</span>
+          <span className="text-white/70 font-medium">₽</span>
+        </div>
+      </div>
+
+      <CardContent className="p-7 pt-5 flex-1 space-y-5">
+        <div className="space-y-2">
+          <p className={cn('text-[10px] font-bold uppercase tracking-widest', s.sectionLbl)}>Доступные модули:</p>
+          <ul className="space-y-1.5">
+            {tariff.modules.map((m, i) => (
+              <li key={i} className={cn('flex items-start gap-2 text-xs', m.faded ? 'text-slate-300 line-through' : 'text-slate-600')}>
+                <Check className={cn('shrink-0 mt-0.5', m.faded ? 'text-slate-200' : s.checkActive)} size={13} />
+                <span>{m.text}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="space-y-2">
+          <p className={cn('text-[10px] font-bold uppercase tracking-widest', s.sectionLbl)}>Бонусы:</p>
+          <ul className="space-y-1.5">
+            {tariff.bonuses.map((b, i) => (
+              <li key={i} className="flex items-start gap-2 text-xs font-medium text-slate-800">
+                <Star className={cn('shrink-0 mt-0.5', s.starColor)} size={13} />
+                <span>{b}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="space-y-2">
+          <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Доступы и связь:</p>
+          <ul className="space-y-1.5">
+            {tariff.access.map((a, i) => (
+              <li key={i} className="flex items-start gap-2 text-xs text-slate-600">
+                <Check className="text-slate-300 shrink-0 mt-0.5" size={13} />
+                <span>{a}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </CardContent>
+
+      <CardFooter className="p-7 pt-0 flex-col items-stretch">
+        <button
+          type="button"
+          onClick={() => gcOpenModal(tariff.widgetId)}
+          className={cn(
+            'w-full py-4 px-8 rounded-xl font-bold text-base text-white border-none cursor-pointer',
+            'flex items-center justify-center gap-2',
+            'transition-all duration-200 hover:scale-[1.02] active:scale-[0.98]',
+            s.btnClass
+          )}
+        >
+          <span>👆</span>
+          <span>КУПИТЬ</span>
+        </button>
+      </CardFooter>
+    </Card>
+  );
+}
+
 export function Pricing() {
   return (
     <section id="pricing" className="py-20 bg-slate-50">
@@ -99,108 +227,7 @@ export function Pricing() {
 
         <div className="grid lg:grid-cols-3 gap-8 max-w-7xl mx-auto items-stretch">
           {tariffs.map((tariff, idx) => (
-            <Card
-              key={idx}
-              className={cn(
-                'flex flex-col relative overflow-hidden border-none shadow-xl',
-                tariff.popular
-                  ? 'ring-2 ring-[#f97316] scale-[1.02] z-10 shadow-2xl shadow-orange-100'
-                  : 'bg-white'
-              )}
-            >
-              {tariff.popular && (
-                <div className="absolute top-0 left-0 right-0 bg-[#f97316] text-white text-center py-2 text-xs font-bold uppercase tracking-widest">
-                  Самый популярный
-                </div>
-              )}
-              <CardHeader className={cn('p-7 pb-4', tariff.popular && 'pt-10')}>
-                <div className="flex items-center gap-2 mb-2">
-                  <Badge variant="secondary" className="bg-slate-100 text-slate-600 border-none text-xs">{tariff.level}</Badge>
-                </div>
-                <div className="flex items-center justify-between mb-1">
-                  <CardTitle className="text-xl font-bold">{tariff.name}</CardTitle>
-                  {tariff.icon}
-                </div>
-                <p className="text-slate-500 text-xs mb-4">{tariff.description}</p>
-                <div className="flex items-baseline gap-1">
-                  <span className="text-4xl font-extrabold text-slate-900">{tariff.price}</span>
-                  <span className="text-slate-500 font-medium">₽</span>
-                </div>
-              </CardHeader>
-
-              <CardContent className="p-7 pt-3 flex-1 space-y-6">
-                {/* Modules */}
-                <div className="space-y-2">
-                  <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Доступные модули:</p>
-                  <ul className="space-y-1.5">
-                    {tariff.modules.map((m, i) => (
-                      <li
-                        key={i}
-                        className={cn(
-                          'flex items-start gap-2 text-xs',
-                          m.faded ? 'text-slate-300 line-through' : 'text-slate-600'
-                        )}
-                      >
-                        <Check
-                          className={cn('shrink-0 mt-0.5', m.faded ? 'text-slate-200' : 'text-primary')}
-                          size={13}
-                        />
-                        <span>{m.text}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-
-                {/* Bonuses */}
-                <div className="space-y-2">
-                  <p className="text-[10px] font-bold text-[#f97316] uppercase tracking-widest">Бонусы:</p>
-                  <ul className="space-y-1.5">
-                    {tariff.bonuses.map((b, i) => (
-                      <li key={i} className="flex items-start gap-2 text-xs font-medium text-slate-800">
-                        <Star className="text-[#f97316] shrink-0 mt-0.5" size={13} />
-                        <span>{b}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-
-                {/* Access */}
-                <div className="space-y-2">
-                  <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Доступы и связь:</p>
-                  <ul className="space-y-1.5">
-                    {tariff.access.map((a, i) => (
-                      <li key={i} className="flex items-start gap-2 text-xs text-slate-600">
-                        <Check className="text-slate-300 shrink-0 mt-0.5" size={13} />
-                        <span>{a}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </CardContent>
-
-              <CardFooter className="p-7 pt-0 flex-col items-stretch gap-0">
-                <Button
-                  className={cn(
-                    'w-full h-13 text-base font-bold rounded-xl border-none',
-                    tariff.popular
-                      ? 'bg-[#f97316] hover:bg-[#ea580c] text-white shadow-lg shadow-orange-100'
-                      : 'bg-[#f97316] hover:bg-[#ea580c] text-white shadow-lg shadow-orange-100'
-                  )}
-                  size="lg"
-                  onClick={() => {
-                    // Scroll to widget rendered below
-                    document
-                      .getElementById(`widget-${tariff.widgetId}`)
-                      ?.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                  }}
-                >
-                  КУПИТЬ
-                </Button>
-                <div id={`widget-${tariff.widgetId}`}>
-                  <GetCourseWidget widgetId={tariff.widgetId} scriptId={tariff.scriptId} />
-                </div>
-              </CardFooter>
-            </Card>
+            <TariffCard key={idx} tariff={tariff} />
           ))}
         </div>
 
@@ -224,7 +251,7 @@ export function Pricing() {
                 <p className="font-bold text-slate-900 text-sm">Для тех, кто идёт на оба уровня:</p>
                 <p className="text-slate-600 text-sm leading-relaxed">
                   Хотите учиться 4 месяца (2+2) —{' '}
-                  <span className="text-primary font-bold">скидка 30%</span> на оба уровня.
+                  <span className="text-primary font-bold">скидка 40%</span> на оба уровня.
                 </p>
                 <p className="text-xs text-slate-400">Кодовое слово <span className="font-bold text-slate-600">УРОВЕНЬ</span> — напишите в ТГ или МАХ.</p>
               </div>
@@ -241,37 +268,19 @@ export function Pricing() {
                 <h3 className="text-2xl md:text-3xl font-extrabold text-white uppercase leading-tight relative z-10">
                   Беспроцентная<br />рассрочка<br />до 12 месяцев
                 </h3>
-                {/* Official bank icons row */}
+                {/* Official bank logos row */}
                 <div className="flex flex-wrap gap-3 mt-6 relative z-10">
-                  {/* Sberbank */}
-                  <div className="w-10 h-10 rounded-xl bg-white flex items-center justify-center shadow-md" title="Сбербанк">
-                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
-                      <circle cx="12" cy="12" r="12" fill="#21A038"/>
-                      <path d="M12 4.5C9.8 4.5 7.9 5.4 6.5 6.8L8.2 8.5C9.2 7.6 10.5 7 12 7C15.3 7 18 9.7 18 13H20C20 8.6 16.4 5 12 5V4.5Z" fill="white" opacity="0.9"/>
-                      <path d="M12 19C8.7 19 6 16.3 6 13H4C4 17.4 7.6 21 12 21V19Z" fill="white" opacity="0.9"/>
-                      <circle cx="12" cy="13" r="3.5" fill="white"/>
-                    </svg>
+                  <div className="h-10 px-2 rounded-xl bg-white flex items-center justify-center shadow-md" title="Сбербанк">
+                    <img src={`${import.meta.env.BASE_URL}images/sber.jpg`} alt="Сбербанк" className="h-7 w-auto object-contain" />
                   </div>
-                  {/* Tinkoff */}
-                  <div className="w-10 h-10 rounded-xl bg-white flex items-center justify-center shadow-md" title="Т-Банк (Тинькофф)">
-                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
-                      <rect width="24" height="24" rx="6" fill="#FFDD2D"/>
-                      <text x="12" y="17" textAnchor="middle" fill="#333" fontSize="13" fontWeight="900" fontFamily="Arial, sans-serif">Т</text>
-                    </svg>
+                  <div className="h-10 px-2 rounded-xl bg-white flex items-center justify-center shadow-md" title="Т-Банк">
+                    <img src={`${import.meta.env.BASE_URL}images/tbank.svg`} alt="Т-Банк" className="h-7 w-auto object-contain" />
                   </div>
-                  {/* OTP */}
-                  <div className="w-10 h-10 rounded-xl bg-white flex items-center justify-center shadow-md" title="ОТП банк">
-                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
-                      <rect width="24" height="24" rx="6" fill="#EF3124"/>
-                      <text x="12" y="16" textAnchor="middle" fill="white" fontSize="8" fontWeight="900" fontFamily="Arial, sans-serif">OTP</text>
-                    </svg>
+                  <div className="h-10 px-2 rounded-xl bg-white flex items-center justify-center shadow-md" title="ОТП Банк">
+                    <img src={`${import.meta.env.BASE_URL}images/otp-bank.png`} alt="ОТП Банк" className="h-7 w-auto object-contain" />
                   </div>
-                  {/* MTS */}
-                  <div className="w-10 h-10 rounded-xl bg-white flex items-center justify-center shadow-md" title="МТС банк">
-                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
-                      <rect width="24" height="24" rx="6" fill="#E30611"/>
-                      <text x="12" y="16" textAnchor="middle" fill="white" fontSize="8" fontWeight="900" fontFamily="Arial, sans-serif">МТС</text>
-                    </svg>
+                  <div className="h-10 px-2 rounded-xl bg-white flex items-center justify-center shadow-md" title="МТС Банк">
+                    <img src={`${import.meta.env.BASE_URL}images/mts-bank.png`} alt="МТС Банк" className="h-7 w-auto object-contain" />
                   </div>
                 </div>
               </div>
@@ -315,12 +324,10 @@ export function Pricing() {
                     href="https://max.ru/u/f9LHodD0cOK4FCCehXDnZVD9DPEf3Pur_Rgmnral_wmHP9O1MFHvQz7C16o"
                     target="_blank"
                     rel="noreferrer"
-                    className="inline-flex items-center justify-center gap-2 border border-primary/30 text-primary hover:bg-primary/5 font-bold text-sm px-5 py-3 rounded-xl transition-colors"
+                    className="inline-flex items-center justify-center gap-2 text-white font-bold text-sm px-5 py-3 rounded-xl transition-opacity hover:opacity-90 shadow-sm"
+                    style={{ background: 'linear-gradient(135deg, #5B4FE8 0%, #8B5CF6 40%, #3B82F6 100%)' }}
                   >
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-                      <rect width="24" height="24" rx="6" fill="#0077FF"/>
-                      <text x="12" y="17" textAnchor="middle" fill="white" fontSize="13" fontWeight="bold" fontFamily="Arial">M</text>
-                    </svg>
+                    <img src={`${import.meta.env.BASE_URL}images/max-logo.png`} alt="MAX" className="w-4 h-4 rounded object-cover" />
                     Написать в МАХ
                   </a>
                 </div>
