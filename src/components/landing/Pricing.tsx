@@ -251,7 +251,7 @@ export function Pricing() {
                 <p className="font-bold text-slate-900 text-sm">Для тех, кто идёт на оба уровня:</p>
                 <p className="text-slate-600 text-sm leading-relaxed">
                   Хотите учиться 4 месяца (2+2) —{' '}
-                  <span className="text-primary font-bold">скидка 40%</span> на оба уровня.
+                  <span className="text-primary font-bold">скидка 40%</span> на уровень 2.
                 </p>
                 <p className="text-xs text-slate-400">Кодовое слово <span className="font-bold text-slate-600">УРОВЕНЬ</span> — напишите в ТГ или МАХ.</p>
               </div>
