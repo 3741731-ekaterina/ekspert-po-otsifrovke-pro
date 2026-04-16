@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Эксперт по оцифровке бизнеса PRO — практический курс по управленческому учёту и автоматизации от Екатерины Яхонтовой. Старт 11 мая." />
+    <meta property="og:title" content="Эксперт по оцифровке бизнеса PRO" />
+    <meta property="og:description" content="Практический курс по управленческому учёту. 2 уровня, 2 месяца, старт 11 мая." />
+    <title>Эксперт по оцифровке бизнеса PRO — Екатерина Яхонтова</title>
+    <script type="module" crossorigin src="/ekspert-po-otsifrovke-pro/assets/index-Bscw8_IV.js"></script>
+    <link rel="stylesheet" crossorigin href="/ekspert-po-otsifrovke-pro/assets/index-B7UFcaDk.css">
+  </head>
+  <body>
+    <div id="root"></div>
+
+    <!-- ═══ PAYMENT MODALS ═══ -->
+    <div class="gc-payment-modal" id="pm-1590613" onclick="if(event.target===this)gcCloseModal('1590613')">
+      <div class="gc-payment-inner">
+        <button class="gc-payment-close" onclick="gcCloseModal('1590613')">✕</button>
+        <script id="e15b4f1aaaabd44641abb60da25eb7c129a90425" src="https://yahontovaschool.getcourse.ru/pl/lite/widget/script?id=1590613"></script>
+      </div>
+    </div>
+
+    <div class="gc-payment-modal" id="pm-1590614" onclick="if(event.target===this)gcCloseModal('1590614')">
+      <div class="gc-payment-inner">
+        <button class="gc-payment-close" onclick="gcCloseModal('1590614')">✕</button>
+        <script id="298380bb3e0a84be6ed550763ad89aea7f88185f" src="https://yahontovaschool.getcourse.ru/pl/lite/widget/script?id=1590614"></script>
+      </div>
+    </div>
+
+    <div class="gc-payment-modal" id="pm-1590615" onclick="if(event.target===this)gcCloseModal('1590615')">
+      <div class="gc-payment-inner">
+        <button class="gc-payment-close" onclick="gcCloseModal('1590615')">✕</button>
+        <script id="fbe7a5c2c9da2b051496fc15622c2e1c533ddc18" src="https://yahontovaschool.getcourse.ru/pl/lite/widget/script?id=1590615"></script>
+      </div>
+    </div>
+
+    <style>
+      .gc-payment-modal {
+        visibility: hidden; opacity: 0; pointer-events: none;
+        position: fixed; inset: 0; z-index: 9000;
+        display: flex; align-items: center; justify-content: center; padding: 20px;
+        background: rgba(7,7,26,.88); backdrop-filter: blur(10px);
+        transition: opacity .3s, visibility .3s;
+      }
+      .gc-payment-modal.open { visibility: visible; opacity: 1; pointer-events: auto; }
+      .gc-payment-inner {
+        position: relative; background: #fff; border-radius: 20px; padding: 16px;
+        max-width: 560px; width: 100%; max-height: 90vh; overflow-y: auto;
+        box-shadow: 0 32px 80px rgba(0,0,0,.6);
+      }
+      .gc-payment-close {
+        position: absolute; top: 10px; right: 14px;
+        background: rgba(0,0,0,.08); border: none; width: 32px; height: 32px;
+        border-radius: 50%; font-size: 18px; cursor: pointer;
+        display: flex; align-items: center; justify-content: center; z-index: 1; line-height: 1;
+      }
+    </style>
+
+    <script>
+      function gcOpenModal(id) {
+        var m = document.getElementById('pm-' + id);
+        if (m) { m.classList.add('open'); document.body.style.overflow = 'hidden'; }
+      }
+      function gcCloseModal(id) {
+        var m = document.getElementById('pm-' + id);
+        if (m) { m.classList.remove('open'); document.body.style.overflow = ''; }
+      }
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') { ['1590613','1590614','1590615'].forEach(gcCloseModal); }
+      });
+    </script>
+  </body>
+</html>
