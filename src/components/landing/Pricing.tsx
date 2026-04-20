@@ -67,7 +67,7 @@ const tariffs = [
       { text: 'Модуль 5. Финансовый анализ и презентация отчётности', faded: false },
       { text: 'Модуль 6. Как из навыков сделать услуги и продать их клиенту', faded: false },
     ],
-    bonuses: ['Курс по Google-таблицам', 'Курс по нейросетям', 'Урок по Unit-экономике', 'Учебник (при оплате до 1 мая)'],
+    bonuses: ['Курс по Google-таблицам', 'Экспресс-курс по нейросетям', 'Урок по Unit-экономике', 'Учебник (при оплате до 1 мая)'],
     access: ['Общий чат с учениками', 'Проверка ДЗ экспертом', '6 созвонов с экспертом', 'Доступ к курсу 1 год', 'Сертификат'],
     widgetId: '1590613',
     scriptId: 'e15b4f1aaaabd44641abb60da25eb7c129a90425',
@@ -82,15 +82,15 @@ const tariffs = [
     icon: <Zap className="text-white/90" size={22} />,
     modules: [
       { text: 'Модуль 1. Зачем нужен финдир и услуги финучёта', faded: false },
-      { text: 'Модуль 2. Отчёт ДДС', faded: false },
-      { text: 'Модуль 3. Управление денежными потоками и платёжный календарь', faded: false },
-      { text: 'Модуль 4. ОПиУ: выручка, расходы, зарплата, обязательства, налоги', faded: false },
-      { text: 'Модуль 5. Баланс', faded: false },
+      { text: 'Модуль 2. Отчет ДДС в Финтабло и ПланФакте', faded: false },
+      { text: 'Модуль 3. Управление денежными потоками и платежный календарь в Финтабло и ПланФакте', faded: false },
+      { text: 'Модуль 4. ОПиУ в Финтабло и ПланФакте: выручка, расходы, обязательства, налоги', faded: false },
+      { text: 'Модуль 5. Отчет Баланс на базе сервисов Финтабло и ПланФакт', faded: false },
       { text: 'Модуль 6. Финансовый анализ и презентация отчётности', faded: false },
       { text: 'Модуль 7. Финансовое планирование (Бюджетирование)', faded: true },
       { text: 'Модуль 8. Как из навыков сделать услуги и продать их клиенту', faded: true },
     ],
-    bonuses: ['Курс по Google-таблицам', 'Курс по нейросетям', 'Урок по Unit-экономике', 'Учебник (при оплате до 1 мая)'],
+    bonuses: ['Курс по Google-таблицам', 'Экспресс-курс по нейросетям', 'Урок по Unit-экономике', 'Учебник (при оплате до 1 мая)'],
     access: ['Общий чат с учениками', 'Проверка ДЗ куратором', '6 созвонов с экспертами', 'Доступ к курсу 1 год', 'Сертификат'],
     widgetId: '1590614',
     scriptId: '298380bb3e0a84be6ed550763ad89aea7f88185f',
@@ -105,15 +105,15 @@ const tariffs = [
     icon: <Rocket className="text-white/90" size={22} />,
     modules: [
       { text: 'Модуль 1. Зачем нужен финдир и услуги финучёта', faded: false },
-      { text: 'Модуль 2. Отчёт ДДС', faded: false },
-      { text: 'Модуль 3. Управление денежными потоками и платёжный календарь', faded: false },
-      { text: 'Модуль 4. ОПиУ: выручка, расходы, зарплата, обязательства, налоги', faded: false },
-      { text: 'Модуль 5. Баланс', faded: false },
+      { text: 'Модуль 2. Отчет ДДС в Финтабло и ПланФакте', faded: false },
+      { text: 'Модуль 3. Управление денежными потоками и платежный календарь в Финтабло и ПланФакте', faded: false },
+      { text: 'Модуль 4. ОПиУ в Финтабло и ПланФакте: выручка, расходы, обязательства, налоги', faded: false },
+      { text: 'Модуль 5. Отчет Баланс на базе сервисов Финтабло и ПланФакт', faded: false },
       { text: 'Модуль 6. Финансовый анализ и презентация отчётности', faded: false },
       { text: 'Модуль 7. Финансовое планирование (Бюджетирование)', faded: false },
       { text: 'Модуль 8. Как из навыков сделать услуги и продать их клиенту', faded: false },
     ],
-    bonuses: ['Курс по Google-таблицам', 'Курс по нейросетям', 'Урок по Unit-экономике', 'Учебник (при оплате до 1 мая)'],
+    bonuses: ['Курс по Google-таблицам', 'Экспресс-курс по нейросетям', 'Урок по Unit-экономике', 'Учебник (при оплате до 1 мая)'],
     access: ['Общий чат с учениками', 'Проверка ДЗ куратором', '8 созвонов с экспертом', 'Доступ к курсу 1,5 года', 'Сертификат'],
     widgetId: '1590615',
     scriptId: 'fbe7a5c2c9da2b051496fc15622c2e1c533ddc18',
@@ -223,12 +223,52 @@ export function Pricing() {
           <p className="text-lg text-slate-600 max-w-2xl mx-auto">
             Выберите подходящий уровень обучения и начните путь к востребованной профессии.
           </p>
+          {/* 20 МЕСТ badge */}
+          <div className="inline-flex items-center gap-2 bg-red-500 text-white font-extrabold text-lg px-6 py-3 rounded-full shadow-lg shadow-red-300/50 animate-pulse">
+            <span>🔥</span>
+            <span>ОСТАЛОСЬ 20 МЕСТ</span>
+            <span>🔥</span>
+          </div>
         </div>
 
         <div className="grid lg:grid-cols-3 gap-8 max-w-7xl mx-auto items-stretch">
           {tariffs.map((tariff, idx) => (
             <TariffCard key={idx} tariff={tariff} />
           ))}
+        </div>
+
+        {/* Consultation block */}
+        <div className="mt-12 max-w-4xl mx-auto bg-gradient-to-r from-blue-600 to-blue-500 rounded-3xl p-8 text-white shadow-xl shadow-blue-300/30">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-6">
+            <div className="space-y-2 text-center md:text-left">
+              <p className="text-white/70 text-sm font-semibold uppercase tracking-widest">Не можете выбрать?</p>
+              <h3 className="text-xl md:text-2xl font-extrabold">Нужна консультация по выбору тарифа?</h3>
+              <p className="text-white/80 text-sm">Напишите мне — помогу подобрать подходящий уровень</p>
+            </div>
+            <div className="flex flex-col sm:flex-row gap-3 shrink-0">
+              <a
+                href="https://t.me/yakhontova_finance"
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center justify-center gap-2 bg-white text-blue-600 font-bold px-6 py-3 rounded-2xl hover:bg-blue-50 transition-colors shadow-md text-sm"
+              >
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                  <circle cx="12" cy="12" r="12" fill="#229ED9"/>
+                  <path d="M17.64 7.11L15.3 17.25c-.17.76-.63.95-1.27.59l-3.5-2.58-1.69 1.63c-.19.19-.34.34-.69.34l.25-3.56 6.4-5.78c.28-.25-.06-.38-.43-.14L6.3 12.57 2.83 11.5c-.75-.23-.76-.75.16-1.12l13.74-5.3c.62-.23 1.17.15.91 1.03z" fill="white"/>
+                </svg>
+                Telegram
+              </a>
+              <a
+                href="https://max.ru/u/f9LHodD0cOK4FCCehXDnZVD9DPEf3Pur_Rgmnral_wmHP9O1MFHvQz7C16o"
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center justify-center gap-2 bg-white/15 hover:bg-white/25 text-white font-bold px-6 py-3 rounded-2xl transition-colors border border-white/30 text-sm"
+              >
+                <img src={`${(import.meta as any).env.BASE_URL}images/max-logo.png`} alt="MAX" className="w-5 h-5 rounded object-cover" />
+                МАХ
+              </a>
+            </div>
+          </div>
         </div>
 
         {/* Special offers */}

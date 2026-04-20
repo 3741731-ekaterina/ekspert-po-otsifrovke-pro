@@ -22,6 +22,122 @@
   }
 }
 
+/* ============================================================
+   WOW EFFECTS — scroll reveal, hover lift, gradient, parallax
+   ============================================================ */
+
+/* 1. Smooth scroll */
+html {
+  scroll-behavior: smooth;
+}
+
+/* 2. Scroll reveal — sections fade in from below */
+.reveal-section {
+  opacity: 0;
+  transform: translateY(52px);
+  transition:
+    opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+.reveal-section.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* 3. Card hover lift */
+.card-lift {
+  transition:
+    transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1),
+    box-shadow 0.35s ease;
+  will-change: transform;
+}
+.card-lift:hover {
+  transform: translateY(-7px) scale(1.012);
+  box-shadow:
+    0 28px 56px -12px rgba(37, 99, 235, 0.14),
+    0 10px 20px -6px rgba(0, 0, 0, 0.08);
+}
+
+/* 4. Animated gradient text */
+@keyframes gradientShift {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+.text-gradient-anim {
+  background: linear-gradient(135deg, #2563eb 0%, #7c3aed 35%, #0ea5e9 65%, #2563eb 100%);
+  background-size: 300% 300%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: gradientShift 6s ease infinite;
+}
+
+/* 5. Button shine sweep */
+@keyframes btnShine {
+  0%   { transform: translateX(-120%) skewX(-20deg); }
+  100% { transform: translateX(320%) skewX(-20deg); }
+}
+.btn-shine {
+  position: relative;
+  overflow: hidden;
+}
+.btn-shine::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  width: 35%;
+  background: linear-gradient(
+    to right,
+    transparent 0%,
+    rgba(255, 255, 255, 0.28) 50%,
+    transparent 100%
+  );
+  animation: btnShine 3.5s ease-in-out infinite;
+  animation-delay: 1.2s;
+  pointer-events: none;
+}
+
+/* 6. Parallax background blobs */
+.parallax-blob {
+  will-change: transform;
+  transition: transform 0.1s linear;
+}
+
+/* 8. 3D spinning ring */
+@keyframes ring3d {
+  0%   { transform: rotateX(65deg) rotateZ(0deg); }
+  100% { transform: rotateX(65deg) rotateZ(360deg); }
+}
+.ring-3d {
+  transform-style: preserve-3d;
+  animation: ring3d 18s linear infinite;
+}
+
+/* 9. Shimmer on hero heading */
+@keyframes shimmer {
+  0%   { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+/* 10. Premium section style helpers */
+.section-card {
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+/* 7. Section heading fade from left */
+@keyframes fadeInLeft {
+  from { opacity: 0; transform: translateX(-24px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+.heading-reveal {
+  animation: fadeInLeft 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+/* ============================================================ */
+
 /* Custom Scrollbar */
 ::-webkit-scrollbar {
   width: 6px;

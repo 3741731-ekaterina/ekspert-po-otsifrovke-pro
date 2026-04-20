@@ -2,7 +2,7 @@ import React from 'react';
 
 export function ContactCTA() {
   return (
-    <section className="py-16 bg-gradient-to-br from-blue-50 to-white overflow-hidden">
+    <section id="contact" className="py-16 bg-gradient-to-br from-blue-50 to-white overflow-hidden">
       <div className="container mx-auto px-4">
         <div className="max-w-5xl mx-auto">
           <div className="bg-white rounded-3xl shadow-xl border border-slate-100 overflow-hidden">
@@ -10,7 +10,7 @@ export function ContactCTA() {
               {/* Left: image */}
               <div className="flex items-center justify-center bg-gradient-to-br from-blue-50 to-primary/5 p-8 md:p-12 min-h-[280px]">
                 <img
-                  src="/images/phone.png"
+                  src={`${import.meta.env.BASE_URL}images/phone.png`}
                   alt="Написать Екатерине"
                   className="w-48 md:w-56 h-auto drop-shadow-2xl"
                 />
@@ -47,13 +47,14 @@ export function ContactCTA() {
                     href="https://max.ru/u/f9LHodD0cOK4FCCehXDnZVD9DPEf3Pur_Rgmnral_wmHP9O1MFHvQz7C16o"
                     target="_blank"
                     rel="noreferrer"
-                    className="flex items-center justify-center gap-3 bg-[#0077FF] hover:bg-[#0062cc] text-white font-bold px-6 py-4 rounded-2xl transition-colors shadow-md shadow-blue-100 text-sm"
+                    className="flex items-center justify-center gap-3 text-white font-bold px-6 py-4 rounded-2xl transition-opacity hover:opacity-90 shadow-md text-sm"
+                    style={{ background: 'linear-gradient(135deg, #5B4FE8 0%, #8B5CF6 40%, #3B82F6 100%)' }}
                   >
-                    {/* MAX icon */}
-                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
-                      <rect width="24" height="24" rx="7" fill="white" fillOpacity="0.25"/>
-                      <text x="12" y="17.5" textAnchor="middle" fill="white" fontSize="14" fontWeight="900" fontFamily="Arial, sans-serif">M</text>
-                    </svg>
+                    <img
+                      src={`${import.meta.env.BASE_URL}images/max-logo.png`}
+                      alt="MAX"
+                      className="w-6 h-6 rounded-md object-cover"
+                    />
                     Написать в МАХ
                   </a>
                 </div>

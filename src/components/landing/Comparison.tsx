@@ -1,5 +1,5 @@
 import React from 'react';
-import { Check, X } from 'lucide-react';
+import { Check, X, TableProperties, Settings2 } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 
 const comparisonData = [
@@ -15,7 +15,7 @@ const comparisonData = [
 
 export function Comparison() {
   return (
-    <section className="py-20 bg-white">
+    <section className="py-20 bg-slate-50/70">
       <div className="container mx-auto px-4">
         <div className="max-w-4xl mx-auto space-y-12">
           <div className="text-center space-y-4">
@@ -57,12 +57,29 @@ export function Comparison() {
             </Card>
           </div>
 
-          <div className="bg-slate-900 text-white p-8 md:p-12 rounded-3xl space-y-6 text-center">
-            <h3 className="text-2xl md:text-3xl font-bold">Уникальность курса — 2 разных уровня обучения</h3>
-            <p className="text-slate-300 text-lg max-w-2xl mx-auto leading-relaxed">
-              Для начинающих финансистов и бухгалтеров — финансовый учет на базе таблиц. Для опытных финансистов — финансовый учет на базе автоматизации.
-            </p>
-            <p className="text-slate-400">
+          <div className="bg-slate-900 text-white p-8 md:p-12 rounded-3xl space-y-8">
+            <h3 className="text-2xl md:text-3xl font-bold text-center">Уникальность курса — 2 разных уровня обучения</h3>
+            <div className="grid md:grid-cols-2 gap-6">
+              <div className="flex items-start gap-5 bg-white/5 rounded-2xl p-6 border border-white/10">
+                <div className="w-12 h-12 rounded-2xl bg-primary/20 flex items-center justify-center shrink-0">
+                  <TableProperties className="text-primary" size={26} />
+                </div>
+                <div>
+                  <p className="font-bold text-white text-base mb-1">Для тех, кто с полного нуля и начинающих финансистов</p>
+                  <p className="text-slate-400 text-sm leading-relaxed">Финансовый учёт на базе Google-таблиц — понятно, системно, с нуля.</p>
+                </div>
+              </div>
+              <div className="flex items-start gap-5 bg-white/5 rounded-2xl p-6 border border-white/10">
+                <div className="w-12 h-12 rounded-2xl bg-orange-500/20 flex items-center justify-center shrink-0">
+                  <Settings2 className="text-orange-400" size={26} />
+                </div>
+                <div>
+                  <p className="font-bold text-white text-base mb-1">Для опытных финансистов</p>
+                  <p className="text-slate-400 text-sm leading-relaxed">Финансовый учёт на базе автоматизированных сервисов — больше клиентов, меньше операционки.</p>
+                </div>
+              </div>
+            </div>
+            <p className="text-slate-400 text-center text-sm">
               Выбирайте то, что подходит конкретно вам, без переплаты на информацию, которую вы либо уже знаете, либо не осилите из-за нехватки навыков.
             </p>
           </div>

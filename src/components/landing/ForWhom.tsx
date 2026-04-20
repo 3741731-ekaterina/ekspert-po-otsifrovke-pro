@@ -5,6 +5,8 @@ import { UserCircle2, Briefcase, GraduationCap, ArrowRight } from 'lucide-react'
 const targetAudience = [
   {
     title: 'Бухгалтер, главбух',
+    emoji: '🧮',
+    avatarBg: 'bg-blue-50',
     icon: <UserCircle2 className="text-primary" size={32} />,
     problem: [
       'Выгорели от бухгалтерского учёта',
@@ -22,6 +24,8 @@ const targetAudience = [
   },
   {
     title: 'Финменеджер, начинающий финансист',
+    emoji: '📈',
+    avatarBg: 'bg-orange-50',
     icon: <Briefcase className="text-primary" size={32} />,
     problem: [
       'Знание таблиц есть, а комплексного подхода нет',
@@ -40,6 +44,8 @@ const targetAudience = [
   },
   {
     title: 'Финдиректор с опытом',
+    emoji: '🏆',
+    avatarBg: 'bg-purple-50',
     icon: <GraduationCap className="text-primary" size={32} />,
     problem: [
       'Внедряете финучёт на таблицах',
@@ -60,7 +66,7 @@ const targetAudience = [
 
 export function ForWhom() {
   return (
-    <section id="for-whom" className="py-20 bg-slate-50">
+    <section id="for-whom" className="py-20 bg-white">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16 space-y-4">
           <h2 className="text-3xl md:text-5xl font-extrabold text-primary">Для кого этот курс?</h2>
@@ -71,10 +77,13 @@ export function ForWhom() {
 
         <div className="grid lg:grid-cols-3 gap-8">
           {targetAudience.map((item, idx) => (
-            <Card key={idx} className="border-none shadow-lg hover:shadow-xl transition-shadow bg-white overflow-hidden flex flex-col">
-              <CardHeader className="bg-slate-50 border-b border-slate-100 p-8">
-                <div className="mb-4">{item.icon}</div>
-                <CardTitle className="text-2xl font-bold text-slate-900">{item.title}</CardTitle>
+            <Card key={idx} className="border border-slate-100 shadow-lg hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 bg-white overflow-hidden flex flex-col">
+              <CardHeader className="border-b border-slate-100 p-7 pb-5">
+                {/* Avatar with emoji */}
+                <div className={`w-16 h-16 rounded-2xl ${item.avatarBg} flex items-center justify-center mb-4 shadow-sm`}>
+                  <span className="text-3xl">{item.emoji}</span>
+                </div>
+                <CardTitle className="text-xl font-bold text-slate-900 leading-snug">{item.title}</CardTitle>
               </CardHeader>
               <CardContent className="p-8 flex-1 flex flex-col gap-8">
                 <div className="space-y-4">

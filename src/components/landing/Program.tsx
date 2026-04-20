@@ -90,7 +90,7 @@ const level2 = [
     result: 'Знаете, зачем клиенту услуги финучета, как эти услуги продать и как выстроить работу на этапе оказания услуг. Умеете донести ценности ведения проектов на базе сервисов.'
   },
   {
-    title: 'Модуль 2. Отчет ДДС',
+    title: 'Модуль 2. Отчет ДДС в Финтабло и ПланФакте',
     lessons: [
       'Что такое ДДС и его источники информации',
       'Настойка программы и логика работы сервиса Финтабло',
@@ -102,7 +102,7 @@ const level2 = [
     result: 'Навык сборки отчета ДДС на базе сервисов Финтабло и ПланФакт.'
   },
   {
-    title: 'Модуль 3. Управление денежными потоками и платежный календарь',
+    title: 'Модуль 3. Управление денежными потоками и платежный календарь в Финтабло и ПланФакте',
     lessons: [
       'Что такое платежный календарь и его назначение',
       'Как проанализировать денежные потоки при помощи ИИ',
@@ -113,7 +113,7 @@ const level2 = [
     result: 'Умеете не просто учитывать факт, а помогать клиенту управлять деньгами на опережение.'
   },
   {
-    title: 'Модуль 4. ОПиУ: выручка, расходы, зарплата, обязательства, налоги',
+    title: 'Модуль 4. ОПиУ в Финтабло и ПланФакте: выручка, расходы, обязательства, налоги',
     lessons: [
       'Источники и логика признания. Кассовый и начисленный метод',
       'Расходы и зарплата. Отражение расходов, учёт зарплаты, налогов',
@@ -124,7 +124,7 @@ const level2 = [
     result: 'Навык формирования ОПиУ в сервисах Финтабло и ПланФакт.'
   },
   {
-    title: 'Модуль 5. Баланс',
+    title: 'Модуль 5. Отчет Баланс на базе сервисов Финтабло и ПланФакт',
     lessons: [
       'Зачем бизнесу управленческий баланс',
       'Как Баланс связан с ДДС и ОПиУ',
@@ -183,13 +183,34 @@ export function Program() {
           </p>
         </div>
 
+        <p className="text-center text-lg font-semibold text-slate-600 mb-6 flex items-center justify-center gap-2">
+          <span>👇</span>
+          Жмите на кнопку «Уровень 1» или «Уровень 2», чтобы посмотреть программу соответствующего уровня
+        </p>
+
         <Tabs defaultValue="level1" className="max-w-4xl mx-auto">
-          <TabsList className="grid w-full grid-cols-2 h-auto p-1 bg-slate-100 rounded-2xl mb-12">
-            <TabsTrigger value="level1" className="rounded-xl py-4 text-sm md:text-base font-bold data-[state=active]:bg-white data-[state=active]:shadow-sm">
-              Уровень 1. Финучет на Таблицах
+          <TabsList className="grid w-full grid-cols-2 h-auto p-1.5 bg-slate-100 rounded-2xl mb-12 gap-1.5">
+            <TabsTrigger
+              value="level1"
+              className="rounded-xl py-5 text-sm md:text-base font-bold transition-all duration-200
+                data-[state=active]:bg-blue-600 data-[state=active]:text-white data-[state=active]:shadow-lg data-[state=active]:shadow-blue-400/40
+                data-[state=inactive]:text-slate-500 data-[state=inactive]:hover:text-blue-700 data-[state=inactive]:hover:bg-blue-50"
+            >
+              <span className="flex flex-col items-center gap-0.5">
+                <span className="text-[10px] font-semibold uppercase tracking-widest opacity-70">Уровень 1</span>
+                <span>Финучёт на Таблицах</span>
+              </span>
             </TabsTrigger>
-            <TabsTrigger value="level2" className="rounded-xl py-4 text-sm md:text-base font-bold data-[state=active]:bg-white data-[state=active]:shadow-sm">
-              Уровень 2. Финучет на Сервисах
+            <TabsTrigger
+              value="level2"
+              className="rounded-xl py-5 text-sm md:text-base font-bold transition-all duration-200
+                data-[state=active]:bg-orange-500 data-[state=active]:text-white data-[state=active]:shadow-lg data-[state=active]:shadow-orange-400/40
+                data-[state=inactive]:text-slate-500 data-[state=inactive]:hover:text-orange-600 data-[state=inactive]:hover:bg-orange-50"
+            >
+              <span className="flex flex-col items-center gap-0.5">
+                <span className="text-[10px] font-semibold uppercase tracking-widest opacity-70">Уровень 2</span>
+                <span>Финучёт на Автоматизированных сервисах</span>
+              </span>
             </TabsTrigger>
           </TabsList>
 

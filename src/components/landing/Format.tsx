@@ -13,7 +13,7 @@ const formats = [
 
 export function Format() {
   return (
-    <section className="py-20 bg-white">
+    <section className="py-20 bg-blue-50/30">
       <div className="container mx-auto px-4">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16 space-y-4">

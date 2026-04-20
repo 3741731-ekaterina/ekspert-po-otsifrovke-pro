@@ -8,7 +8,10 @@ const navItems = [
   { label: 'Программа', href: '#program' },
   { label: 'Бонусы', href: '#bonuses' },
   { label: 'Тарифы', href: '#pricing' },
+  { label: 'Об авторе', href: '#author' },
+  { label: 'Отзывы', href: '#reviews' },
   { label: 'FAQ', href: '#faq' },
+  { label: 'Контакты', href: '#contact' },
 ];
 
 const TgIcon = ({ size = 20 }: { size?: number }) => (
@@ -19,10 +22,13 @@ const TgIcon = ({ size = 20 }: { size?: number }) => (
 );
 
 const MaxIcon = ({ size = 20 }: { size?: number }) => (
-  <svg width={size} height={size} viewBox="0 0 24 24" fill="none">
-    <rect width="24" height="24" rx="6" fill="#0077FF"/>
-    <text x="12" y="17.5" textAnchor="middle" fill="white" fontSize="14" fontWeight="900" fontFamily="Arial, sans-serif">M</text>
-  </svg>
+  <img
+    src={`${import.meta.env.BASE_URL}images/max-logo.png`}
+    alt="MAX"
+    width={size}
+    height={size}
+    style={{ borderRadius: 6, display: 'inline-block' }}
+  />
 );
 
 export function Header() {
@@ -30,10 +36,17 @@ export function Header() {
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container mx-auto px-4 flex h-16 items-center justify-between">
         {/* Logo */}
-        <div className="flex items-center gap-2 font-bold text-lg tracking-tight">
-          <span className="bg-primary text-white px-2 py-1 rounded text-xs font-bold">PRO</span>
-          <span className="hidden sm:inline text-slate-800">Оцифровка Бизнеса</span>
-        </div>
+        <a href="#" className="flex items-center gap-2.5 group">
+          <img
+            src={`${import.meta.env.BASE_URL}images/school-logo.png`}
+            alt="Школа финансового аутсорсинга Екатерины Яхонтовой"
+            className="w-10 h-10 rounded-full object-cover shadow-sm ring-1 ring-primary/10 group-hover:ring-primary/30 transition-all"
+          />
+          <div className="hidden sm:block leading-tight">
+            <p className="text-[11px] font-semibold text-primary/70 uppercase tracking-widest leading-none mb-0.5">Школа финансового аутсорсинга</p>
+            <p className="text-sm font-extrabold text-slate-800 leading-none">Екатерины Яхонтовой</p>
+          </div>
+        </a>
 
         {/* Desktop Nav */}
         <nav className="hidden md:flex items-center gap-5 text-sm font-medium text-slate-600">

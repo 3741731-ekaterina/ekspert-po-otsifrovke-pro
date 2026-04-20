@@ -55,7 +55,7 @@ function FlipCard({ flipped, onFlip, front, back }: {
   back: React.ReactNode;
 }) {
   return (
-    <div className="relative" style={{ perspective: '1200px', minHeight: 320 }}>
+    <div className="relative h-full" style={{ perspective: '1200px', minHeight: 360 }}>
       <div
         className="absolute inset-0 transition-transform duration-700"
         style={{
@@ -98,7 +98,7 @@ export function Bonuses() {
         </div>
 
         {/* Flip cards */}
-        <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto" style={{ minHeight: 340 }}>
+        <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto items-stretch" style={{ minHeight: 360 }}>
           {/* Card 1 — Google Таблицы */}
           <FlipCard
             flipped={flipped1}
@@ -123,7 +123,7 @@ export function Bonuses() {
                 <div className="mt-auto">
                   <button
                     onClick={() => setFlipped1(true)}
-                    className="flex items-center gap-2 text-primary font-bold text-sm hover:text-primary/80 transition-colors border border-primary/30 rounded-xl px-4 py-2.5 hover:bg-primary/10"
+                    className="flex items-center gap-2 text-white font-bold text-sm transition-colors border border-white/25 rounded-xl px-4 py-2.5 hover:bg-white/10 hover:border-white/50"
                   >
                     <RotateCcw size={16} />
                     Подробнее о программе
@@ -185,7 +185,7 @@ export function Bonuses() {
                 <div className="mt-auto">
                   <button
                     onClick={() => setFlipped2(true)}
-                    className="flex items-center gap-2 text-primary font-bold text-sm hover:text-primary/80 transition-colors border border-primary/30 rounded-xl px-4 py-2.5 hover:bg-primary/10"
+                    className="flex items-center gap-2 text-white font-bold text-sm transition-colors border border-white/25 rounded-xl px-4 py-2.5 hover:bg-white/10 hover:border-white/50"
                   >
                     <RotateCcw size={16} />
                     Подробнее о программе
@@ -229,7 +229,7 @@ export function Bonuses() {
                 Учебник «Эксперт по оцифровке бизнеса»
               </h3>
               <p className="text-slate-300 leading-relaxed">
-                Твёрдая база построения управленческих отчётов и финансового анализа с QR-кодами на готовые шаблоны таблиц. Более 100 страниц практики.
+                Твёрдая база построения управленческих отчётов и финансового анализа с QR-кодами на готовые шаблоны таблиц. Более 200 страниц практики.
               </p>
               <ul className="space-y-2">
                 {['Доступ к курсу закончится — учебник будет с вами навсегда', 'Бесплатно при оплате до 1 мая'].map((t, i) => (
@@ -255,7 +255,7 @@ export function Bonuses() {
             </div>
             <div className="lg:w-72 relative flex items-center justify-center">
               <img
-                src="/images/book.png"
+                src={`${import.meta.env.BASE_URL}images/book.png`}
                 alt="Учебник Эксперт по оцифровке бизнеса"
                 className="w-full max-w-[260px] h-auto rounded-2xl shadow-2xl relative z-10"
               />
