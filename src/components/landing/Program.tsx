@@ -193,22 +193,22 @@ export function Program() {
             <TabsTrigger
               value="level1"
               className="rounded-xl py-5 text-sm md:text-base font-bold transition-all duration-200
-                data-[state=active]:bg-blue-600 data-[state=active]:text-white data-[state=active]:shadow-lg data-[state=active]:shadow-blue-400/40
-                data-[state=inactive]:text-slate-500 data-[state=inactive]:hover:text-blue-700 data-[state=inactive]:hover:bg-blue-50"
+                data-active:bg-blue-600 data-active:text-white data-active:shadow-lg data-active:shadow-blue-400/40
+                text-slate-500 hover:text-blue-700 hover:bg-blue-50"
             >
               <span className="flex flex-col items-center gap-0.5">
-                <span className="text-[10px] font-semibold uppercase tracking-widest opacity-70">Уровень 1</span>
+                <span className="text-[10px] font-semibold uppercase tracking-widest opacity-70">📊 Уровень 1</span>
                 <span>Финучёт на Таблицах</span>
               </span>
             </TabsTrigger>
             <TabsTrigger
               value="level2"
               className="rounded-xl py-5 text-sm md:text-base font-bold transition-all duration-200
-                data-[state=active]:bg-orange-500 data-[state=active]:text-white data-[state=active]:shadow-lg data-[state=active]:shadow-orange-400/40
-                data-[state=inactive]:text-slate-500 data-[state=inactive]:hover:text-orange-600 data-[state=inactive]:hover:bg-orange-50"
+                data-active:bg-orange-500 data-active:text-white data-active:shadow-lg data-active:shadow-orange-400/40
+                text-slate-500 hover:text-orange-600 hover:bg-orange-50"
             >
               <span className="flex flex-col items-center gap-0.5">
-                <span className="text-[10px] font-semibold uppercase tracking-widest opacity-70">Уровень 2</span>
+                <span className="text-[10px] font-semibold uppercase tracking-widest opacity-70">⚙️ Уровень 2</span>
                 <span>Финучёт на Автоматизированных сервисах</span>
               </span>
             </TabsTrigger>

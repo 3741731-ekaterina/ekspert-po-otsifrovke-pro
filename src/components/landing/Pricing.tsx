@@ -10,41 +10,44 @@ const schemes = {
   /* сиреневый / лаванда */
   blue: {
     cardBg:      'bg-gradient-to-b from-violet-50 to-white',
-    headerBg:    'bg-gradient-to-br from-violet-300 to-indigo-300',
-    badgeBg:     'bg-violet-100 text-violet-600',
-    priceTxt:    'text-violet-600',
+    headerBg:    'bg-gradient-to-br from-violet-600 to-indigo-700',
+    badgeBg:     'bg-white/20 text-white',
+    descBg:      'bg-white/15 text-white/90',
+    priceTxt:    'text-white',
     checkActive: 'text-violet-400',
-    sectionLbl:  'text-violet-300',
-    starColor:   'text-violet-300',
+    sectionLbl:  'text-violet-400',
+    starColor:   'text-violet-400',
     borderRing:  'ring-1 ring-violet-200',
-    btnClass:    'bg-gradient-to-r from-violet-400 to-indigo-400 shadow-lg shadow-violet-200/60 hover:shadow-violet-300/60',
+    btnClass:    'bg-gradient-to-r from-violet-600 to-indigo-600 shadow-lg shadow-violet-300/50 hover:shadow-violet-400/60',
     popularBar:  '',
   },
   /* мятный / нефритовый */
   teal: {
-    cardBg:      'bg-gradient-to-b from-emerald-50 to-white',
-    headerBg:    'bg-gradient-to-br from-teal-300 to-emerald-300',
-    badgeBg:     'bg-emerald-100 text-emerald-700',
-    priceTxt:    'text-emerald-600',
-    checkActive: 'text-emerald-400',
-    sectionLbl:  'text-emerald-300',
-    starColor:   'text-emerald-300',
-    borderRing:  'ring-1 ring-emerald-200',
-    btnClass:    'bg-gradient-to-r from-teal-400 to-emerald-400 shadow-lg shadow-emerald-200/60 hover:shadow-emerald-300/60',
+    cardBg:      'bg-gradient-to-b from-teal-50 to-white',
+    headerBg:    'bg-gradient-to-br from-teal-600 to-emerald-700',
+    badgeBg:     'bg-white/20 text-white',
+    descBg:      'bg-white/15 text-white/90',
+    priceTxt:    'text-white',
+    checkActive: 'text-teal-400',
+    sectionLbl:  'text-teal-400',
+    starColor:   'text-teal-400',
+    borderRing:  'ring-1 ring-teal-200',
+    btnClass:    'bg-gradient-to-r from-teal-600 to-emerald-600 shadow-lg shadow-teal-300/50 hover:shadow-teal-400/60',
     popularBar:  '',
   },
   /* персиковый / абрикосовый */
   orange: {
-    cardBg:      'bg-gradient-to-b from-rose-50 to-white',
-    headerBg:    'bg-gradient-to-br from-rose-300 to-orange-200',
-    badgeBg:     'bg-rose-100 text-rose-600',
-    priceTxt:    'text-rose-500',
-    checkActive: 'text-rose-400',
-    sectionLbl:  'text-rose-300',
-    starColor:   'text-rose-300',
-    borderRing:  'ring-1 ring-rose-200',
-    btnClass:    'bg-gradient-to-r from-rose-400 to-orange-300 shadow-lg shadow-rose-200/60 hover:shadow-rose-300/60',
-    popularBar:  'bg-gradient-to-r from-rose-400 to-orange-300',
+    cardBg:      'bg-gradient-to-b from-orange-50 to-white',
+    headerBg:    'bg-gradient-to-br from-orange-500 to-rose-600',
+    badgeBg:     'bg-white/20 text-white',
+    descBg:      'bg-white/15 text-white/90',
+    priceTxt:    'text-white',
+    checkActive: 'text-orange-400',
+    sectionLbl:  'text-orange-400',
+    starColor:   'text-orange-400',
+    borderRing:  'ring-1 ring-orange-200',
+    btnClass:    'bg-gradient-to-r from-orange-500 to-rose-500 shadow-lg shadow-orange-300/50 hover:shadow-orange-400/60',
+    popularBar:  'bg-gradient-to-r from-orange-500 to-rose-500',
   },
 } as const;
 
@@ -152,10 +155,10 @@ function TariffCard({ tariff }: { tariff: Tariff }) {
           <h3 className="text-xl font-bold text-white">{tariff.name}</h3>
           {tariff.icon}
         </div>
-        <p className="text-white/70 text-xs mb-4">{tariff.description}</p>
+        <span className={cn('inline-block text-sm font-semibold px-3 py-1 rounded-full mb-4', s.descBg)}>{tariff.description}</span>
         <div className="flex items-baseline gap-1">
           <span className="text-4xl font-extrabold text-white">{tariff.price}</span>
-          <span className="text-white/70 font-medium">₽</span>
+          <span className="text-white/80 font-medium">₽</span>
         </div>
       </div>
 
