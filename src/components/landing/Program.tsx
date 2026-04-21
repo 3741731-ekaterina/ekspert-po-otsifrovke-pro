@@ -1,9 +1,9 @@
-import React from 'react';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import React, { useState } from 'react';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { CheckCircle2, PlayCircle, BookOpen, Target } from 'lucide-react';
+import { cn } from '@/lib/utils';
 
 const level1 = [
   {
@@ -173,6 +173,8 @@ const level2 = [
 ];
 
 export function Program() {
+  const [active, setActive] = useState<'level1' | 'level2'>('level1');
+
   return (
     <section id="program" className="py-20 bg-white">
       <div className="container mx-auto px-4">
@@ -188,33 +190,38 @@ export function Program() {
           Жмите на кнопку «Уровень 1» или «Уровень 2», чтобы посмотреть программу соответствующего уровня
         </p>
 
-        <Tabs defaultValue="level1" className="max-w-4xl mx-auto">
-          <TabsList className="grid w-full grid-cols-2 h-auto p-1.5 bg-slate-100 rounded-2xl mb-12 gap-1.5">
-            <TabsTrigger
-              value="level1"
-              className="rounded-xl py-5 text-sm md:text-base font-bold transition-all duration-200 whitespace-normal h-auto
-                data-active:bg-blue-600 data-active:text-white data-active:shadow-lg data-active:shadow-blue-400/40
-                text-slate-500 hover:text-blue-700 hover:bg-blue-50"
+        <div className="max-w-4xl mx-auto">
+          {/* Custom tab switcher */}
+          <div className="grid grid-cols-2 gap-2 p-1.5 bg-slate-100 rounded-2xl mb-12">
+            <button
+              type="button"
+              onClick={() => setActive('level1')}
+              className={cn(
+                'rounded-xl py-4 px-3 font-bold text-sm md:text-base transition-all duration-200 text-center',
+                active === 'level1'
+                  ? 'bg-blue-600 text-white shadow-lg shadow-blue-400/40'
+                  : 'text-slate-500 hover:text-blue-700 hover:bg-blue-50'
+              )}
             >
-              <span className="flex flex-col items-center gap-0.5 text-center">
-                <span className="text-[10px] font-semibold uppercase tracking-widest opacity-70">📊 Уровень 1</span>
-                <span>Финучёт на Таблицах</span>
-              </span>
-            </TabsTrigger>
-            <TabsTrigger
-              value="level2"
-              className="rounded-xl py-5 text-sm md:text-base font-bold transition-all duration-200 whitespace-normal h-auto
-                data-active:bg-orange-500 data-active:text-white data-active:shadow-lg data-active:shadow-orange-400/40
-                text-slate-500 hover:text-orange-600 hover:bg-orange-50"
+              <span className="block text-[10px] font-semibold uppercase tracking-widest opacity-70 mb-0.5">📊 Уровень 1</span>
+              <span>Финучёт на Таблицах</span>
+            </button>
+            <button
+              type="button"
+              onClick={() => setActive('level2')}
+              className={cn(
+                'rounded-xl py-4 px-3 font-bold text-sm md:text-base transition-all duration-200 text-center',
+                active === 'level2'
+                  ? 'bg-orange-500 text-white shadow-lg shadow-orange-400/40'
+                  : 'text-slate-500 hover:text-orange-600 hover:bg-orange-50'
+              )}
             >
-              <span className="flex flex-col items-center gap-0.5 text-center">
-                <span className="text-[10px] font-semibold uppercase tracking-widest opacity-70">⚙️ Уровень 2</span>
-                <span>Финучёт на Автоматизированных сервисах</span>
-              </span>
-            </TabsTrigger>
-          </TabsList>
+              <span className="block text-[10px] font-semibold uppercase tracking-widest opacity-70 mb-0.5">⚙️ Уровень 2</span>
+              <span>Финучёт на Автоматизированных сервисах</span>
+            </button>
+          </div>
 
-          <TabsContent value="level1" className="space-y-8">
+          {active === 'level1' && <div className="space-y-8">
             <div className="bg-primary/5 p-6 rounded-2xl border border-primary/10 mb-8">
               <h3 className="text-xl font-bold text-primary mb-2 flex items-center gap-2">
                 <Target size={24} />
@@ -277,9 +284,9 @@ export function Program() {
                 </AccordionItem>
               ))}
             </Accordion>
-          </TabsContent>
+          </div>}
 
-          <TabsContent value="level2" className="space-y-8">
+          {active === 'level2' && <div className="space-y-8">
             <div className="bg-primary/5 p-6 rounded-2xl border border-primary/10 mb-8">
               <h3 className="text-xl font-bold text-primary mb-2 flex items-center gap-2">
                 <Target size={24} />
@@ -342,8 +349,8 @@ export function Program() {
                 </AccordionItem>
               ))}
             </Accordion>
-          </TabsContent>
-        </Tabs>
+          </div>}
+        </div>
 
         <div className="mt-16 text-center">
           <Button size="lg" className="h-14 px-12 text-lg rounded-xl shadow-xl shadow-primary/20" render={<a href="#pricing" />}>
