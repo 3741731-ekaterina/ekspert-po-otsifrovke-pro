@@ -116,7 +116,7 @@ export function Hero() {
         <div className="grid lg:grid-cols-[1fr_440px] xl:grid-cols-[1fr_500px] gap-4 lg:gap-8 items-center min-h-[calc(100vh-4rem)] lg:min-h-0">
 
           {/* LEFT — Text */}
-          <div className="space-y-6 lg:pr-8 py-8 lg:py-16 order-2 lg:order-1">
+          <div className="space-y-6 lg:pr-8 py-8 lg:py-16 order-1 lg:order-1">
             <div className="flex flex-wrap gap-2">
               <Badge className="bg-primary/10 text-primary border-primary/20 px-3 py-1 text-xs font-bold uppercase tracking-wider">
                 Старт — 11 мая
@@ -193,7 +193,7 @@ export function Hero() {
           </div>
 
           {/* RIGHT — Photo (no background, full height) */}
-          <div className="relative order-1 lg:order-2 flex justify-center lg:justify-end items-end">
+          <div className="relative order-2 lg:order-2 flex justify-center lg:justify-end items-end">
 
             {/* Glow under photo */}
             <div

@@ -192,22 +192,22 @@ export function Program() {
           <TabsList className="grid w-full grid-cols-2 h-auto p-1.5 bg-slate-100 rounded-2xl mb-12 gap-1.5">
             <TabsTrigger
               value="level1"
-              className="rounded-xl py-5 text-sm md:text-base font-bold transition-all duration-200
+              className="rounded-xl py-5 text-sm md:text-base font-bold transition-all duration-200 whitespace-normal h-auto
                 data-active:bg-blue-600 data-active:text-white data-active:shadow-lg data-active:shadow-blue-400/40
                 text-slate-500 hover:text-blue-700 hover:bg-blue-50"
             >
-              <span className="flex flex-col items-center gap-0.5">
+              <span className="flex flex-col items-center gap-0.5 text-center">
                 <span className="text-[10px] font-semibold uppercase tracking-widest opacity-70">📊 Уровень 1</span>
                 <span>Финучёт на Таблицах</span>
               </span>
             </TabsTrigger>
             <TabsTrigger
               value="level2"
-              className="rounded-xl py-5 text-sm md:text-base font-bold transition-all duration-200
+              className="rounded-xl py-5 text-sm md:text-base font-bold transition-all duration-200 whitespace-normal h-auto
                 data-active:bg-orange-500 data-active:text-white data-active:shadow-lg data-active:shadow-orange-400/40
                 text-slate-500 hover:text-orange-600 hover:bg-orange-50"
             >
-              <span className="flex flex-col items-center gap-0.5">
+              <span className="flex flex-col items-center gap-0.5 text-center">
                 <span className="text-[10px] font-semibold uppercase tracking-widest opacity-70">⚙️ Уровень 2</span>
                 <span>Финучёт на Автоматизированных сервисах</span>
               </span>
