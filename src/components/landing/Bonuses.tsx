@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { Badge } from '@/components/ui/badge';
-import { Button } from '@/components/ui/button';
 import { FileSpreadsheet, Sparkles, RotateCcw } from 'lucide-react';
 
 const googleTablesModules = [
@@ -91,7 +90,7 @@ export function Bonuses() {
       <div className="container mx-auto px-4 relative z-10">
         <div className="text-center mb-16 space-y-4">
           <Badge className="bg-primary text-white hover:bg-primary/90 px-4 py-1 text-sm">Спецпредложение</Badge>
-          <h2 className="text-3xl md:text-5xl font-extrabold text-primary">Покупаете 1 курс — получаете 3 курса</h2>
+          <h2 className="text-3xl md:text-5xl font-extrabold text-primary">Покупаете 1 курс — получаете 2 курса в подарок</h2>
           <p className="text-slate-400 text-lg max-w-2xl mx-auto">
             Только в этом потоке при покупке любого тарифа вы получаете дополнительные обучающие программы бесплатно.
           </p>
@@ -220,50 +219,6 @@ export function Bonuses() {
           />
         </div>
 
-        {/* Textbook */}
-        <div className="mt-16 max-w-5xl mx-auto bg-gradient-to-br from-primary/80 to-primary p-0.5 rounded-3xl">
-          <div className="bg-slate-900 rounded-[calc(1.5rem-2px)] p-8 md:p-12 flex flex-col lg:flex-row items-center gap-10">
-            <div className="flex-1 space-y-5">
-              <Badge className="bg-[#f97316] text-white border-none">Эксклюзив</Badge>
-              <h3 className="text-3xl md:text-4xl font-extrabold leading-tight">
-                Учебник «Эксперт по оцифровке бизнеса»
-              </h3>
-              <p className="text-slate-300 leading-relaxed">
-                Твёрдая база построения управленческих отчётов и финансового анализа с QR-кодами на готовые шаблоны таблиц. Более 200 страниц практики.
-              </p>
-              <ul className="space-y-2">
-                {['Доступ к курсу закончится — учебник будет с вами навсегда', 'Бесплатно при оплате до 1 мая'].map((t, i) => (
-                  <li key={i} className="flex items-center gap-2 text-slate-400 text-sm">
-                    <span className="w-1.5 h-1.5 rounded-full bg-primary shrink-0" />
-                    {t}
-                  </li>
-                ))}
-              </ul>
-              <div className="flex items-center gap-5 pt-2">
-                <div>
-                  <span className="text-slate-500 line-through text-sm block">15 000 ₽</span>
-                  <span className="text-white font-extrabold text-3xl">0 ₽</span>
-                </div>
-                <Button
-                  size="lg"
-                  className="bg-[#f97316] hover:bg-[#ea580c] text-white rounded-xl px-8 h-13 font-bold border-none shadow-lg shadow-orange-500/20"
-                  render={<a href="#pricing" />}
-                >
-                  Забрать учебник
-                </Button>
-              </div>
-            </div>
-            <div className="lg:w-72 relative flex items-center justify-center">
-              <img
-                src={`${import.meta.env.BASE_URL}images/book.png`}
-                alt="Учебник Эксперт по оцифровке бизнеса"
-                className="w-full max-w-[260px] h-auto rounded-2xl shadow-2xl relative z-10"
-              />
-              <div className="absolute -top-4 -right-4 w-24 h-24 bg-primary/20 rounded-full blur-2xl" />
-              <div className="absolute -bottom-4 -left-4 w-32 h-32 bg-primary/30 rounded-full blur-3xl" />
-            </div>
-          </div>
-        </div>
       </div>
       <div className="absolute top-0 left-0 w-full h-full opacity-10 pointer-events-none">
         <div className="absolute top-1/4 left-10 w-64 h-64 bg-primary rounded-full blur-[120px]" />
