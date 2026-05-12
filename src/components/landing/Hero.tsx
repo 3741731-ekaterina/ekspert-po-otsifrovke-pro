@@ -119,7 +119,7 @@ export function Hero() {
           <div className="space-y-6 lg:pr-8 py-8 lg:py-16 order-1 lg:order-1">
             <div className="flex flex-wrap gap-2">
               <Badge className="bg-primary/10 text-primary border-primary/20 px-3 py-1 text-xs font-bold uppercase tracking-wider">
-                Старт — 11 мая
+                Донабор до 20 мая
               </Badge>
               <Badge className="bg-primary/10 text-primary border-primary/20 px-3 py-1 text-xs font-bold uppercase tracking-wider">
                 2 месяца обучения
